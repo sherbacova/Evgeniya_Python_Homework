@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.maximize_window() #для разворачивания окна
-driver.get(" http://uitestingplayground.com/ajax")
+driver.get("http://uitestingplayground.com/ajax")
 
 input_field = driver.find_element(By.CSS_SELECTOR, "#ajaxButton").click()
 

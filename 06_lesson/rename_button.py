@@ -5,7 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.maximize_window() #для разворачивания окна
-driver.get(" http://uitestingplayground.com/textinput")
+driver.get("http://uitestingplayground.com/textinput")
 
 input_field = driver.find_element(By.CSS_SELECTOR, "#newButtonName")
 input_field.send_keys("SkyPro")

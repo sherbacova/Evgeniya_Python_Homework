@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from CalculatorPage import CalculatorPage
+from pages.CalculatorPage import CalculatorPage
 
 @pytest.fixture()
 def driver():

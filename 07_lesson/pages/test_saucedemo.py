@@ -1,14 +1,15 @@
 import pytest
 from selenium import webdriver
-from pages.LoginPage import LoginPage
-from pages.InventoryPage import InventoryPage
-from pages.CartPage import CartPage
-from pages.CheckoutPage import CheckoutPage
+from LoginPage import LoginPage
+from InventoryPage import InventoryPage
+from CartPage import CartPage
+from CheckoutPage import CheckoutPage
+from selenium.webdriver.firefox.webdriver import WebDriver
 
 
 @pytest.fixture()
 def driver():
-    driver = webdriver.Firefox()
+    driver: WebDriver = webdriver.Firefox()
     driver.maximize_window()
     yield driver
     driver.quit()

@@ -1,21 +1,20 @@
 from project_YouGile import ProjectYouGile
 
-LOGIN = ""
-PASSWORD = ""
-COMPANY_ID = ""
-
+LOGIN = "ev.sherbacova@yandex.ru"
+PASSWORD = "Shcherbachka93"
+COMPANY_ID = "65797906-9c89-406b-a6b3-480d0e5206a5"
 
 api = ProjectYouGile('https://ru.yougile.com/api-v2/',LOGIN,PASSWORD,COMPANY_ID)
 
 
-def test_create_project_():
+def test_negative_create_project_():
     # количество проектов до
     projects_before = api.get_project_list()
     len_before = len(projects_before)
     # создание проекта
-    title = '  '
+    title = ' '
     users = {
-    "123":"admin"
+        "62d0c983-8ffe-440f-b07a-700b31a2ba83": "admin"
   }
 
     result = api.create_project(title, users)
@@ -31,11 +30,11 @@ def test_create_project_():
     assert projects_after[-1]['id'] == new_id
 
 
-def test_get_project_with_id():
-    # создание проекта
+def test__negativ_get_project_with_id():
+
     title = 'ГосУслуги'
     users = {
-    "8087uhpds87=9-48u94":"admin"
+        "62d0c983-8ffe-440f-b07a-700b31a2ba83": "admin"
   }
     result = api.create_project(title, users)
     project_id = result.json()['id']
@@ -47,10 +46,10 @@ def test_get_project_with_id():
     assert new_project.json()['users'] == users
 
 
-def test_edit_project():
-    title = ' '
+def test_negativ_edit_project():
+    title = 'gltguyigtliuy'
     users = {
-        "":"admin"
+        "62d0c983-8ffe-440f-b07a-700b31a2ba83":"admin"
     }
     result = api.create_project(title, users)
 

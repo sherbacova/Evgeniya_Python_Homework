@@ -1,12 +1,10 @@
 from project_YouGile import ProjectYouGile
 
+LOGIN = "ev.sherbacova@yandex.ru"
+PASSWORD = "Shcherbachka93"
+COMPANY_ID = "65797906-9c89-406b-a6b3-480d0e5206a5"
 
-LOGIN = ""
-PASSWORD = ""
-COMPANY_ID = ""
-
-api = ProjectYouGile('https://ru.yougile.com/api-v2/',LOGIN,PASSWORD,COMPANY_ID)
-
+api = ProjectYouGile('https://ru.yougile.com/api-v2/', LOGIN, PASSWORD, COMPANY_ID)
 
 def test_create_project_():
     # количество проектов до
@@ -16,8 +14,8 @@ def test_create_project_():
     # создание проекта
     title = 'ГосУслуги'
     users = {
-    "62d0c983-8ffe-440f-b07a-700b31a2ba83":"admin"
-  }
+        "62d0c983-8ffe-440f-b07a-700b31a2ba83": "admin"
+    }
 
     result = api.create_project(title, users)
     new_id = result.json()['id']
@@ -36,8 +34,8 @@ def test_get_project_with_id():
     # создание проекта
     title = 'ГосУслуги'
     users = {
-    "62d0c983-8ffe-440f-b07a-700b31a2ba83":"admin"
-  }
+        "62d0c983-8ffe-440f-b07a-700b31a2ba83": "admin"
+    }
     result = api.create_project(title, users)
     project_id = result.json()['id']
 
@@ -57,10 +55,14 @@ def test_edit_project():
 
     project_id = result.json()['id']
     new_deleted = True
-    new_title = 'Edited_ГосУслуги'
+    new_title = 'uhiuГосУслуги'
 
     edited = api.edit_project(project_id, new_deleted, new_title)
     new_project = api.get_project_with_id(project_id)
 
     assert edited.status_code == 200
     assert new_project.json()['title'] == new_title
+
+
+
+

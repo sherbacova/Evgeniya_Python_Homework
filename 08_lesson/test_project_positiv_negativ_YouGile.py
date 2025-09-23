@@ -22,6 +22,8 @@ def test_create_project_positive():
     assert result.status_code == 201
     assert projects_after[-1]['title'] == title
 
+    # api.edit_project(result.json()['id'], True, title)
+
 
 def test_get_project_with_id_positive():
     # создание проекта
@@ -37,6 +39,7 @@ def test_get_project_with_id_positive():
 
     assert new_project.json()['title'] == title
     assert new_project.json()['users'] == users
+    # api.edit_project(project_id, True, title)
 
 
 def test_edit_project_positive():
@@ -59,32 +62,27 @@ def test_edit_project_positive():
 
 def test_create_project_negative():
     # создание проекта
-    title = ' '
+    title = ''
     users = {
         "62d0c983-8ffe-440f-b07a-700b31a2ba83": "admin"
     }
 
     result = api.create_project(title, users)
-    project_id = result.json()['id']
 
-    assert result.status_code == 201
-    assert project_id in result.text
+
+    assert result.status_code == 400
+    assert result.json()['message'][0] == "title should not be empty"
 
 
 def test_get_project_with_id_negative():
-    title = 'ГосУслуги'
-    users = {
-        "62d0c983-8ffe-440f-b07a-700b31a2ba83": "admin"
-    }
-    result = api.create_project(title, users)
-    project_id = result.json()['id']
+
+    project_id = 99999
 
     # обращаемся к проекту
-    new_project = api.get_project_with_id(project_id)
+    result = api.get_project_with_id(project_id)
 
-    assert new_project.json()['title'] == title
-    assert new_project.json()['users'] == users
-
+    assert result.status_code == 404
+    assert result.json()['message'] == "Проект не найден"
 
 def test_edit_project_negative():
     title = 'gltguyigtliuy'
@@ -94,12 +92,12 @@ def test_edit_project_negative():
     result = api.create_project(title, users)
 
     project_id = result.json()['id']
-    new_deleted = True
-    new_title = 'Edited_ГосУслуги'
+    new_deleted = 0
+    new_title = '123'
 
     edited = api.edit_project(project_id, new_deleted, new_title)
-    new_project = api.get_project_with_id(project_id)
 
-    assert edited.status_code == 200
-    assert new_project.json()['title'] == new_title
+    assert edited.status_code == 400
+    assert edited.json()['message'][0] == "deleted must be a boolean value"
+    # api.edit_project(project_id, True, title)
 

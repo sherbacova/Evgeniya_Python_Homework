@@ -26,14 +26,13 @@ class ProjectYouGile:
         }
         resp = requests.post(self.url + 'auth/keys/get', json=payload)
         response_data = resp.json()
-        print(response_data)
-
 
         # Извлекаем токен из ответа
         if 'key' in response_data[0]:
             return response_data[0]['key']
         else:
             raise ValueError("Токен не найден в ответе API")
+
     # Добавить компанию:
     def create_project(self, title, users):
         key = self.token

@@ -25,7 +25,7 @@ class CheckoutPage:
         self.total_locator = (By.CLASS_NAME, "summary_total_label")
         self.finish_button_locator = (By.ID, "finish")
 
-    @allure.step( "Ввод имени '{firstname}'" )
+    @allure.step("Ввод имени '{firstname}'")
     def enter_firstname(self, firstname: str):
         """
         Вводит имя в поле "First Name".
@@ -47,7 +47,7 @@ class CheckoutPage:
         lastname_field = self.driver.find_element(*self.lastname_locator)
         lastname_field.send_keys(lastname)
 
-    @allure.step( "Ввод почтового кода '{postalcode}'" )
+    @allure.step("Ввод почтового кода '{postalcode}'")
     def enter_postalcode(self,  postalcode: str):
         """
         Вводит почтовый код в поле "Postal Code".
@@ -59,7 +59,7 @@ class CheckoutPage:
         postalcode_field = self.driver.find_element(*self.postalcode_locator)
         postalcode_field.send_keys(postalcode)
 
-    @allure.step( "Нажатие кнопки 'Continue'" )
+    @allure.step("Нажатие кнопки 'Continue'")
     def click_continue(self):
         """
         Кликает на кнопку "Continue".
@@ -79,7 +79,7 @@ class CheckoutPage:
         total_element = self.driver.find_element(*self.total_locator)
         return total_element.text
 
-    @allure.step("Заполнение формы оформления заказа: имя='{firstname}', фамилия='{lastname}', почтовый код='{postalcode}'" )
+    @allure.step("Заполнение формы оформления заказа: имя='{firstname}', фамилия='{lastname}', почтовый код='{postalcode}'")
     def fill_form(self, firstname, lastname, postalcode):
         """
         Заполняет форму оформления заказа.
@@ -94,7 +94,7 @@ class CheckoutPage:
         self.enter_postalcode(postalcode)
         self.click_continue()
 
-    @allure.step( "Нажатие кнопки 'Finish'" )
+    @allure.step("Нажатие кнопки 'Finish'")
     def click_finish(self):
         """
         Кликает на кнопку "Finish".

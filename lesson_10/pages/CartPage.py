@@ -18,7 +18,7 @@ class CartPage:
         self.driver: WebDriver = driver
         self.checkout_button_locator = (By.ID, "checkout")
 
-    @allure.step( "Нажатие на кнопку 'Checkout'" )
+    @allure.step("Нажатие на кнопку 'Checkout'")
     def click_checkout(self):
         """
          Кликает на кнопку "Checkout".

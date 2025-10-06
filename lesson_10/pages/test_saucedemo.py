@@ -30,29 +30,29 @@ def test_saucedemo_flow(driver):
     """
     with allure.step( "1. Логин" ):
         login_page = LoginPage( driver )
-        login_page.open( "https://www.saucedemo.com/" )
-        login_page.login( "standard_user", "secret_sauce" )
+        login_page.open("https://www.saucedemo.com/")
+        login_page.login("standard_user", "secret_sauce")
 
-    with allure.step( "2. Добавление товаров в корзину" ):
+    with allure.step("2. Добавление товаров в корзину"):
         inventory_page = InventoryPage( driver )
         inventory_page.add_backpack_to_cart()
         inventory_page.add_tshirt_to_cart()
         inventory_page.add_onesie_to_cart()
 
-    with allure.step( "3. Переход в корзину" ):
+    with allure.step("3. Переход в корзину"):
         inventory_page.go_to_cart()
 
-    with allure.step( "4. Переход к оформлению заказа" ):
+    with allure.step("4. Переход к оформлению заказа"):
         cart_page = CartPage( driver )
         cart_page.click_checkout()
 
-    with allure.step( "5. Заполнение формы оформления заказа" ):
+    with allure.step("5. Заполнение формы оформления заказа"):
         checkout_page = CheckoutPage( driver )
-        checkout_page.fill_form( "Zhenya", "Ivanova", "197235" )
+        checkout_page.fill_form("Zhenya", "Ivanova", "197235")
 
     with allure.step( "6. Получение итоговой стоимости" ):
         total_cost = checkout_page.get_total()
 
-    with allure.step( "7. Проверка итоговой стоимости" ):
+    with allure.step("7. Проверка итоговой стоимости"):
         assert total_cost == "Total: $58.29", f"Expected total to be $58.29, but got {total_cost}"
         checkout_page.click_finish()

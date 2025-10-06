@@ -22,7 +22,7 @@ class LoginPage:
         self.password_locator = (By.ID, "password")
         self.login_button_locator = (By.CSS_SELECTOR, "[name='login-button']")
 
-    @allure.step( "Открытие страницы логина" )
+    @allure.step("Открытие страницы логина")
     def open(self, url: str):
         """
         Открывает страницу логина по указанному URL.
@@ -32,7 +32,7 @@ class LoginPage:
         """
         self.driver.get(url)
 
-    @allure.step( "Ввод имени пользователя '{username}'" )
+    @allure.step("Ввод имени пользователя '{username}'")
     def enter_username(self, username: str):
         """
         Вводит имя пользователя в поле "Username".
@@ -43,7 +43,7 @@ class LoginPage:
         username_field = self.driver.find_element(*self.username_locator)
         username_field.send_keys(username)
 
-    @allure.step( "Ввод пароля" )
+    @allure.step("Ввод пароля")
     def enter_password(self, password: str):
         """
         Вводит пароль в поле "Password".
@@ -54,7 +54,7 @@ class LoginPage:
         password_field = self.driver.find_element(*self.password_locator)
         password_field.send_keys(password)
 
-    @allure.step( "Нажатие кнопки 'Login'" )
+    @allure.step("Нажатие кнопки 'Login'")
     def click_login(self):
         """
         Кликает на кнопку "Login".
@@ -63,7 +63,7 @@ class LoginPage:
         """
         self.driver.find_element(*self.login_button_locator).click()
 
-    @allure.step( "Выполнение логина с именем пользователя '{username}' и паролем" )
+    @allure.step("Выполнение логина с именем пользователя '{username}' и паролем")
     def login(self, username, password: str):
         """
         Выполняет процесс логина.

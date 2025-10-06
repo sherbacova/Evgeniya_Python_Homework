@@ -39,11 +39,11 @@ class CalculatorPage:
         self.driver.get(url)
 
     @allure.step( "Установка задержки {delay} секунд" )
-    def enter_delay(self, delay: int):
+    def enter_delay(self, delay: str):
         """
         Устанавливает задержку для выполнения операций на калькуляторе.
 
-        :param delay: int — время задержки в секундах.
+        :param delay: str — время задержки в секундах.
         :return: None
         """
         delay_input = self.driver.find_element(*self.delay_input_locator)

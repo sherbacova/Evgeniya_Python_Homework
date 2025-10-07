@@ -2,13 +2,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 import allure
-from allure_commons.types import Severity
+
 
 @allure.feature("Страница логина")
 class LoginPage:
     """
     Класс, представляющий страницу логина.
     """
+
     def __init__(self, driver: WebDriver):
         """
         Конструктор класса LoginPage.

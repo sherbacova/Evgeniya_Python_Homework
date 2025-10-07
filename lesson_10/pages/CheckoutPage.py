@@ -2,14 +2,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 import allure
-from allure_commons.types import Severity
+
 
 @allure.feature("Страница оформления заказа")
 class CheckoutPage:
     """
     Класс, представляющий страницу оформления заказа.
     """
-    def __init__(self, driver: WebDriver):
+
+    def __init__(self, driver: WebDriver) -> None:
         """
         Конструктор класса CheckoutPage.
 
@@ -36,7 +37,7 @@ class CheckoutPage:
         firstname_field = self.driver.find_element(*self.firstname_locator)
         firstname_field.send_keys(firstname)
 
-    @allure.step( "Ввод фамилии '{lastname}'" )
+    @allure.step("Ввод фамилии '{lastname}'")
     def enter_lastname(self, lastname: str):
         """
         Вводит фамилию в поле "Last Name".
@@ -48,7 +49,7 @@ class CheckoutPage:
         lastname_field.send_keys(lastname)
 
     @allure.step("Ввод почтового кода '{postalcode}'")
-    def enter_postalcode(self,  postalcode: str):
+    def enter_postalcode(self, postalcode: str):
         """
         Вводит почтовый код в поле "Postal Code".
 
@@ -68,7 +69,7 @@ class CheckoutPage:
         """
         self.driver.find_element(*self.continue_button_locator).click()
 
-    @allure.step( "Получение итоговой суммы" )
+    @allure.step("Получение итоговой суммы")
     def get_total(self):
         """
         Получает итоговую сумму заказа.
@@ -95,7 +96,7 @@ class CheckoutPage:
         self.click_continue()
 
     @allure.step("Нажатие кнопки 'Finish'")
-    def click_finish(self):
+    def click_finish(self) -> None:
         """
         Кликает на кнопку "Finish".
 

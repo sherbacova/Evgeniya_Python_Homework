@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 import allure
-from allure_commons.types import Severity
 
 
 @allure.feature("Страница корзины")
@@ -9,6 +8,7 @@ class CartPage:
     """
     Класс, представляющий страницу корзины.
     """
+
     def __init__(self, driver: WebDriver):
         """
         Конструктор класса  CartPage.

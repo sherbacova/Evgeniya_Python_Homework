@@ -2,11 +2,9 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from CalculatorPage import CalculatorPage
 import allure
 from allure_commons.types import Severity
-
 
 
 @pytest.fixture()
@@ -21,6 +19,7 @@ def driver():
     yield driver
     driver.quit()
 
+
 @allure.title("Тест сложения на калькуляторе")
 @allure.description("Проверяет сложение чисел 7 и 8 на странице калькулятора.")
 @allure.feature("Калькулятор")
@@ -32,8 +31,8 @@ def test_calculator(driver):
     with allure.step("Инициализация страницы калькулятора"):
         calculator_page = CalculatorPage(driver)
     with allure.step("Открытие страницы калькулятора"):
-        calculator_page.open("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
-
+        calculator_page.open(
+            "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
     with allure.step("Ввод задержки"):
         calculator_page.enter_delay("46")
     with allure.step("Нажатие кнопки '7'"):

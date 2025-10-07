@@ -8,6 +8,7 @@ class InventoryPage:
     """
     Класс, представляющий страницу инвентаря (каталог товаров).
     """
+
     def __init__(self, driver: WebDriver):
         """
         Конструктор класса InventoryPage.
@@ -15,10 +16,14 @@ class InventoryPage:
         :param driver: WebDriver — объект драйвера Selenium.
         """
         self.driver: WebDriver = driver
-        self.backpack_locator = (By.CSS_SELECTOR, "#add-to-cart-sauce-labs-backpack")
-        self.tshirt_locator = (By.CSS_SELECTOR, "#add-to-cart-sauce-labs-bolt-t-shirt")
-        self.onesie_locator = (By.CSS_SELECTOR, "#add-to-cart-sauce-labs-onesie")
-        self.cart_link_locator = (By.CSS_SELECTOR, "[class='shopping_cart_link']")
+        self.backpack_locator = (
+            By.CSS_SELECTOR, "#add-to-cart-sauce-labs-backpack")
+        self.tshirt_locator = (
+            By.CSS_SELECTOR, "#add-to-cart-sauce-labs-bolt-t-shirt")
+        self.onesie_locator = (
+            By.CSS_SELECTOR, "#add-to-cart-sauce-labs-onesie")
+        self.cart_link_locator = (
+            By.CSS_SELECTOR, "[class='shopping_cart_link']")
 
     @allure.step("Добавление товара в корзину по локатору")
     def add_to_cart(self, locator):
@@ -28,7 +33,7 @@ class InventoryPage:
         :param locator: tuple — локатор элемента "Add to cart".
         :return: None
         """
-        self.driver.find_element( *locator ).click()
+        self.driver.find_element(*locator).click()
 
     @allure.step("Добавление рюкзака в корзину")
     def add_backpack_to_cart(self):
@@ -64,4 +69,4 @@ class InventoryPage:
 
         :return: None
         """
-        self.driver.find_element( *self.cart_link_locator ).click()
+        self.driver.find_element(*self.cart_link_locator).click()
